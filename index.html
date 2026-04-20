@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ontic, LLC — Building technology that respects human agency. Privacy-first products grounded in information security and behavioral psychology.">
+  <meta property="og:title" content="Ontic, LLC">
+  <meta property="og:description" content="Building technology that respects human agency. Privacy-first, security-grounded, human-centered.">
+  <meta property="og:type" content="website">
+  <title>Ontic, LLC — Technology That Respects Human Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a1a2e;
+      --navy-mid: #16213e;
+      --navy-deep: #0f3460;
+      --amber: #e8b86d;
+      --amber-light: #f2cc8f;
+      --amber-bg: rgba(232, 184, 109, 0.08);
+      --page-bg: #f4f2ee;
+      --ink: #1a1a1a;
+      --ink-soft: #4a4a4a;
+      --ink-muted: #787878;
+      --border: #e0dbd2;
+      --card-bg: #ffffff;
+      --max-w: 68rem;
+      --gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page-bg: #0e0e1a;
+        --ink: #ece9e3;
+        --ink-soft: #c0bcb5;
+        --ink-muted: #888480;
+        --border: #252535;
+        --card-bg: #161625;
+        --amber-bg: rgba(232, 184, 109, 0.06);
+      }
+    }
+
+    [data-theme="dark"] {
+      --page-bg: #0e0e1a;
+      --ink: #ece9e3;
+      --ink-soft: #c0bcb5;
+      --ink-muted: #888480;
+      --border: #252535;
+      --card-bg: #161625;
+      --amber-bg: rgba(232, 184, 109, 0.06);
+    }
+
+    [data-theme="light"] {
+      --page-bg: #f4f2ee;
+      --ink: #1a1a1a;
+      --ink-soft: #4a4a4a;
+      --ink-muted: #787878;
+      --border: #e0dbd2;
+      --card-bg: #ffffff;
+      --amber-bg: rgba(232, 184, 109, 0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--page-bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(232, 184, 109, 0.15);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 3.5rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--amber-light);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(236, 233, 227, 0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--amber-light); }
+
+    .theme-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(236, 233, 227, 0.6);
+      font-size: 1rem;
+      padding: 0.25rem;
+      transition: color 0.15s;
+      line-height: 1;
+    }
+
+    .theme-btn:hover { color: var(--amber-light); }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--navy);
+      padding: clamp(5rem, 12vw, 9rem) 0 clamp(4rem, 10vw, 7rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(15, 52, 96, 0.6) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 48rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: #ece9e3;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--amber-light);
+      font-weight: 300;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(236, 233, 227, 0.7);
+      max-width: 38rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: clamp(3.5rem, 8vw, 6rem) 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.75rem;
+    }
+
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 42rem;
+      line-height: 1.75;
+    }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+    }
+
+    .about-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+
+    .about-card p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .about-icon {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* ── Products ── */
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: clamp(1.75rem, 4vw, 2.5rem);
+      margin-top: 2rem;
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 640px) {
+      .product-card { flex-direction: column; gap: 1.5rem; }
+    }
+
+    .product-badge {
+      background: var(--amber-bg);
+      border: 1px solid rgba(232, 184, 109, 0.3);
+      border-radius: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--amber);
+      white-space: nowrap;
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    .product-info h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-info p {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--navy);
+      color: var(--amber-light);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.6rem 1.25rem;
+      border-radius: 0.4rem;
+      letter-spacing: 0.01em;
+      transition: background 0.15s, color 0.15s;
+      border: 1px solid rgba(232, 184, 109, 0.25);
+    }
+
+    .btn:hover {
+      background: var(--navy-deep);
+      color: var(--amber-light);
+      border-color: rgba(232, 184, 109, 0.5);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .btn { background: var(--navy-mid); }
+      .btn:hover { background: var(--navy-deep); }
+    }
+
+    [data-theme="dark"] .btn { background: var(--navy-mid); }
+    [data-theme="dark"] .btn:hover { background: var(--navy-deep); }
+
+    /* ── Team ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    .team-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+    }
+
+    .team-card .name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+
+    .team-card .role {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+    }
+
+    .team-card p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .text-link {
+      font-size: 0.85rem;
+      color: var(--amber);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(232, 184, 109, 0.3);
+      padding-bottom: 0.05rem;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .text-link:hover {
+      color: var(--amber-light);
+      border-color: var(--amber);
+    }
+
+    /* ── Contact ── */
+    .contact-box {
+      background: var(--navy);
+      border-radius: 1rem;
+      padding: clamp(2rem, 5vw, 3rem);
+      margin-top: 2rem;
+      max-width: 36rem;
+    }
+
+    .contact-box p {
+      color: rgba(236, 233, 227, 0.7);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-email {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      color: var(--amber-light);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.15s;
+    }
+
+    .contact-email:hover { color: #fff; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(232, 184, 109, 0.1);
+      padding: 2rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      color: rgba(236, 233, 227, 0.45);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: rgba(236, 233, 227, 0.45);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--amber); }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Ontic, LLC</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">◐</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Ontic, LLC</p>
+        <h1>Technology that <em>respects</em><br>human agency</h1>
+        <p class="hero-tagline">We build privacy-first software grounded in information security and behavioral psychology — tools that give people control over their own experience, never extract it.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">About</p>
+      <h2>Built on a different premise</h2>
+      <p class="lead">Most technology is designed to capture attention. We build the opposite: small, thoughtful software that strengthens the relationship between people and their own choices.</p>
+      <div class="about-grid">
+        <div class="about-card">
+          <span class="about-icon">🔒</span>
+          <h3>Security-first</h3>
+          <p>Founded by practitioners with deep information security backgrounds. Privacy isn't a policy — it's an architectural decision baked in from day one.</p>
+        </div>
+        <div class="about-card">
+          <span class="about-icon">🧠</span>
+          <h3>Behaviorally grounded</h3>
+          <p>Our products are informed by behavioral psychology research, not engagement metrics. We design for long-term human flourishing, not short-term retention.</p>
+        </div>
+        <div class="about-card">
+          <span class="about-icon">⚖️</span>
+          <h3>Agency over extraction</h3>
+          <p>We measure success by how much control users gain over their lives — not by time-on-app, data collected, or addictive loops engineered.</p>
+        </div>
+        <div class="about-card">
+          <span class="about-icon">🔬</span>
+          <h3>Research-backed</h3>
+          <p>Every product decision is traceable to established research. We don't design by intuition alone — we build on evidence from peer-reviewed behavioral science.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products">
+    <div class="container">
+      <p class="section-label">Products</p>
+      <h2>What we build</h2>
+      <p class="lead">Each product solves a real problem with the minimum footprint necessary.</p>
+
+      <div class="product-card">
+        <div class="product-badge">Digital Balance</div>
+        <div class="product-info">
+          <h3>Reclaim agency over your attention</h3>
+          <p>A privacy-first digital wellness program that helps you understand and reshape your relationship with screens and social media. 52 research-backed lessons, 7 interactive exercises, built on Acceptance and Commitment Therapy. No subscription, no data collection, no algorithm fighting you. $1.</p>
+          <a href="https://digitalbalance.app" class="btn" target="_blank" rel="noopener">Visit digitalbalance.app →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team">
+    <div class="container">
+      <p class="section-label">Team</p>
+      <h2>The people behind Ontic</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <p class="name">Ryan Shanahan</p>
+          <p class="role">Co-Founder</p>
+          <p>Information security professional with a CISO background. Ryan brings a security-first engineering mindset to every product decision — from architecture to data handling to threat modeling. He believes the most ethical software is software that collects nothing it doesn't need.</p>
+          <a href="https://digitalbalance.app/about.html" class="text-link" target="_blank" rel="noopener">Full bio →</a>
+        </div>
+        <div class="team-card">
+          <p class="name">Sylvia Olveda</p>
+          <p class="role">Co-Founder</p>
+          <p>Psychology and UX research background, trained at Stanford and a former TA under Philip Zimbardo. Sylvia leads the behavioral design work at Ontic, ensuring every product intervention is grounded in evidence and oriented toward genuine human wellbeing.</p>
+          <a href="https://digitalbalance.app/about.html" class="text-link" target="_blank" rel="noopener">Full bio →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Contact</p>
+      <h2>Get in touch</h2>
+      <p class="lead">Questions about our products, press inquiries, or just want to talk shop — reach out.</p>
+      <div class="contact-box">
+        <p>We respond to every message personally.</p>
+        <a href="mailto:digitalbalance@onticllc.com" class="contact-email">digitalbalance@onticllc.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Ontic, LLC</span>
+      <ul class="footer-links">
+        <li><a href="https://digitalbalance.app/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    root.dataset.theme = stored || sys;
+    btn.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+  </script>
+
+</body>
+</html>
