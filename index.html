@@ -3,598 +3,607 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ontic, LLC — Building technology that respects human agency. Privacy-first products grounded in information security and behavioral psychology.">
+  <meta name="description" content="Ontic, LLC builds privacy-first software grounded in information security and behavioral psychology.">
   <meta property="og:title" content="Ontic, LLC">
-  <meta property="og:description" content="Building technology that respects human agency. Privacy-first, security-grounded, human-centered.">
+  <meta property="og:description" content="Privacy-first software grounded in information security and behavioral psychology.">
   <meta property="og:type" content="website">
-  <title>Ontic, LLC — Technology That Respects Human Agency</title>
+  <title>Ontic, LLC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #1a1a2e;
-      --navy-mid: #16213e;
-      --navy-deep: #0f3460;
-      --amber: #e8b86d;
-      --amber-light: #f2cc8f;
-      --amber-bg: rgba(232, 184, 109, 0.08);
-      --page-bg: #f4f2ee;
-      --ink: #1a1a1a;
-      --ink-soft: #4a4a4a;
-      --ink-muted: #787878;
-      --border: #e0dbd2;
-      --card-bg: #ffffff;
-      --max-w: 68rem;
-      --gap: clamp(1.5rem, 4vw, 3rem);
+      --paper: #f5f7f9;
+      --surface: #ffffff;
+      --ink: #14233a;
+      --ink-soft: #4b5869;
+      --ink-faint: #6b7787;
+      --rule: #d6dde4;
+      --accent: #1e5e54;
+      --accent-strong: #154840;
+      --hero-bg: #14233a;
+      --hero-ink: #eef2f6;
+      --hero-soft: #a9b6c6;
+      --hero-rule: #2c3d56;
+
+      --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+      --sans: 'Public Sans', system-ui, -apple-system, sans-serif;
+
+      --max-w: 72rem;
+      --gutter: clamp(1rem, 5vw, 3rem);
+      --side: 15rem;
     }
 
     @media (prefers-color-scheme: dark) {
-      :root {
-        --page-bg: #0e0e1a;
-        --ink: #ece9e3;
-        --ink-soft: #c0bcb5;
-        --ink-muted: #888480;
-        --border: #252535;
-        --card-bg: #161625;
-        --amber-bg: rgba(232, 184, 109, 0.06);
+      :root:not([data-theme="light"]) {
+        --paper: #101b2c;
+        --surface: #16233a;
+        --ink: #e8edf3;
+        --ink-soft: #b3bfcd;
+        --ink-faint: #8794a5;
+        --rule: #26364f;
+        --accent: #8cc5b8;
+        --accent-strong: #b4ddd3;
+        --hero-bg: #0b1422;
+        --hero-rule: #22324a;
       }
     }
 
-    [data-theme="dark"] {
-      --page-bg: #0e0e1a;
-      --ink: #ece9e3;
-      --ink-soft: #c0bcb5;
-      --ink-muted: #888480;
-      --border: #252535;
-      --card-bg: #161625;
-      --amber-bg: rgba(232, 184, 109, 0.06);
+    :root[data-theme="dark"] {
+      --paper: #101b2c;
+      --surface: #16233a;
+      --ink: #e8edf3;
+      --ink-soft: #b3bfcd;
+      --ink-faint: #8794a5;
+      --rule: #26364f;
+      --accent: #8cc5b8;
+      --accent-strong: #b4ddd3;
+      --hero-bg: #0b1422;
+      --hero-rule: #22324a;
     }
 
-    [data-theme="light"] {
-      --page-bg: #f4f2ee;
-      --ink: #1a1a1a;
-      --ink-soft: #4a4a4a;
-      --ink-muted: #787878;
-      --border: #e0dbd2;
-      --card-bg: #ffffff;
-      --amber-bg: rgba(232, 184, 109, 0.08);
-    }
-
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
 
     body {
-      font-family: 'DM Sans', system-ui, sans-serif;
-      background: var(--page-bg);
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      background: var(--paper);
       color: var(--ink);
-      line-height: 1.65;
-      font-size: 1rem;
-      transition: background 0.2s, color 0.2s;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .container {
+    a { color: inherit; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .wrap {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 clamp(1.25rem, 5vw, 3rem);
+      padding: 0 var(--gutter);
     }
 
-    /* ── Nav ── */
-    nav {
+    /* Nav */
+    .site-nav {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: var(--navy);
-      border-bottom: 1px solid rgba(232, 184, 109, 0.15);
+      z-index: 10;
+      background: var(--hero-bg);
+      border-bottom: 1px solid var(--hero-rule);
     }
 
-    .nav-inner {
+    .site-nav .wrap {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      height: 3.5rem;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 clamp(1.25rem, 5vw, 3rem);
+      gap: 2rem;
+      height: 4rem;
     }
 
-    .nav-logo {
-      font-family: 'Fraunces', serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--amber-light);
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.375rem;
+      font-weight: 500;
+      color: var(--hero-ink);
       text-decoration: none;
-      letter-spacing: 0.01em;
+      margin-right: auto;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.75rem;
       list-style: none;
     }
 
     .nav-links a {
-      color: rgba(236, 233, 227, 0.7);
+      color: var(--hero-soft);
       text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      transition: color 0.15s;
+      font-size: 0.9375rem;
     }
 
-    .nav-links a:hover { color: var(--amber-light); }
+    .nav-links a:hover { color: var(--hero-ink); }
 
     .theme-btn {
+      display: grid;
+      place-items: center;
+      width: 2.25rem;
+      height: 2.25rem;
       background: none;
-      border: none;
+      border: 1px solid var(--hero-rule);
+      border-radius: 50%;
+      color: var(--hero-soft);
       cursor: pointer;
-      color: rgba(236, 233, 227, 0.6);
-      font-size: 1rem;
-      padding: 0.25rem;
-      transition: color 0.15s;
-      line-height: 1;
     }
 
-    .theme-btn:hover { color: var(--amber-light); }
+    .theme-btn:hover { color: var(--hero-ink); border-color: var(--hero-soft); }
+    .theme-btn svg { width: 1rem; height: 1rem; }
 
-    /* ── Hero ── */
+    @media (max-width: 640px) {
+      .nav-links li:not(:last-child) { display: none; }
+    }
+
+    /* Hero */
     .hero {
-      background: var(--navy);
-      padding: clamp(5rem, 12vw, 9rem) 0 clamp(4rem, 10vw, 7rem);
-      position: relative;
-      overflow: hidden;
+      background: var(--hero-bg);
+      color: var(--hero-ink);
+      padding: clamp(4rem, 11vw, 8rem) 0 clamp(3.5rem, 8vw, 6rem);
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(15, 52, 96, 0.6) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      max-width: 48rem;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 1.25rem;
-    }
-
-    .hero h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.8rem, 6vw, 4.5rem);
-      font-weight: 300;
-      line-height: 1.1;
-      color: #ece9e3;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--amber-light);
-      font-weight: 300;
-    }
-
-    .hero-tagline {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: rgba(236, 233, 227, 0.7);
-      max-width: 38rem;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    /* ── Sections ── */
-    section {
-      padding: clamp(3.5rem, 8vw, 6rem) 0;
-    }
-
-    section + section {
-      border-top: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 1.75rem;
-    }
-
-    h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
-      letter-spacing: -0.01em;
-    }
-
-    .lead {
-      font-size: 1.05rem;
-      color: var(--ink-soft);
-      max-width: 42rem;
-      line-height: 1.75;
-    }
-
-    /* ── About ── */
-    .about-grid {
+    .contrast {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--gap);
-      margin-top: 2.5rem;
+      border-top: 1px solid var(--hero-rule);
+      border-bottom: 1px solid var(--hero-rule);
     }
 
-    @media (max-width: 640px) {
-      .about-grid { grid-template-columns: 1fr; }
-    }
-
-    .about-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 1.75rem;
-    }
-
-    .about-card h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
-      color: var(--ink);
-    }
-
-    .about-card p {
-      font-size: 0.95rem;
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
-    .about-icon {
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
+    .contrast > span {
       display: block;
+      padding: clamp(1.5rem, 4vw, 2.75rem) 0;
     }
 
-    /* ── Products ── */
-    .product-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: clamp(1.75rem, 4vw, 2.5rem);
-      margin-top: 2rem;
-      display: flex;
-      gap: 2.5rem;
-      align-items: flex-start;
+    .contrast > span + span {
+      border-left: 1px solid var(--hero-rule);
+      padding-left: clamp(1.5rem, 4vw, 3rem);
     }
 
-    @media (max-width: 640px) {
-      .product-card { flex-direction: column; gap: 1.5rem; }
-    }
+    .contrast > span:first-child { padding-right: clamp(1.5rem, 4vw, 3rem); }
 
-    .product-badge {
-      background: var(--amber-bg);
-      border: 1px solid rgba(232, 184, 109, 0.3);
-      border-radius: 0.5rem;
-      padding: 0.75rem 1.25rem;
-      font-family: 'Fraunces', serif;
-      font-size: 1.05rem;
+    .contrast small {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.9375rem;
       font-weight: 400;
-      color: var(--amber);
-      white-space: nowrap;
-      flex-shrink: 0;
-      align-self: flex-start;
+      color: var(--hero-soft);
+      margin-bottom: 1rem;
     }
 
-    .product-info h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.35rem;
-      font-weight: 400;
-      margin-bottom: 0.6rem;
+    .contrast b {
+      display: block;
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(2.25rem, 5.4vw, 4.25rem);
+      line-height: 1.04;
+      letter-spacing: -0.015em;
+      font-variation-settings: 'opsz' 72;
     }
 
-    .product-info p {
-      color: var(--ink-soft);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
+    @media (max-width: 720px) {
+      .contrast { grid-template-columns: 1fr; }
+      .contrast > span:first-child { padding-right: 0; }
+      .contrast > span + span {
+        border-left: 0;
+        border-top: 1px solid var(--hero-rule);
+        padding-left: 0;
+      }
+    }
+
+    .hero-foot {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem 3rem;
+      align-items: end;
+      margin-top: clamp(2rem, 5vw, 3rem);
+    }
+
+    .hero-foot p {
+      max-width: 36rem;
+      font-size: 1.1875rem;
+      line-height: 1.6;
+      color: var(--hero-soft);
+    }
+
+    .hero-foot strong { color: var(--hero-ink); font-weight: 500; }
+
+    .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    @media (max-width: 720px) {
+      .hero-foot { grid-template-columns: 1fr; }
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--navy);
-      color: var(--amber-light);
-      text-decoration: none;
-      font-size: 0.875rem;
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      border-radius: 4px;
+      font-size: 0.9375rem;
       font-weight: 500;
-      padding: 0.6rem 1.25rem;
-      border-radius: 0.4rem;
-      letter-spacing: 0.01em;
-      transition: background 0.15s, color 0.15s;
-      border: 1px solid rgba(232, 184, 109, 0.25);
+      text-decoration: none;
+      border: 1px solid transparent;
     }
 
-    .btn:hover {
-      background: var(--navy-deep);
-      color: var(--amber-light);
-      border-color: rgba(232, 184, 109, 0.5);
+    .btn-primary { background: #eef2f6; color: #14233a; }
+    .btn-primary:hover { background: #ffffff; }
+    .btn-quiet { border-color: var(--hero-rule); color: var(--hero-ink); }
+    .btn-quiet:hover { border-color: var(--hero-soft); }
+
+    /* Sections */
+    .section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+    .section + .section { border-top: 1px solid var(--rule); }
+
+    .split {
+      display: grid;
+      grid-template-columns: var(--side) 1fr;
+      gap: 2rem clamp(2rem, 5vw, 4rem);
     }
 
-    @media (prefers-color-scheme: dark) {
-      .btn { background: var(--navy-mid); }
-      .btn:hover { background: var(--navy-deep); }
+    @media (max-width: 860px) {
+      .split { grid-template-columns: 1fr; }
     }
 
-    [data-theme="dark"] .btn { background: var(--navy-mid); }
-    [data-theme="dark"] .btn:hover { background: var(--navy-deep); }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.005em;
+    }
 
-    /* ── Team ── */
-    .team-grid {
+    .lead {
+      font-family: var(--serif);
+      font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+      font-weight: 300;
+      line-height: 1.4;
+      max-width: 34em;
+      font-variation-settings: 'opsz' 36;
+    }
+
+    /* Principles */
+    .principles {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--gap);
-      margin-top: 2rem;
+      gap: 2.5rem clamp(2rem, 4vw, 3.5rem);
+      margin-top: 3rem;
     }
 
     @media (max-width: 640px) {
-      .team-grid { grid-template-columns: 1fr; }
+      .principles { grid-template-columns: 1fr; }
     }
 
-    .team-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 1.75rem;
+    .principles div {
+      border-top: 2px solid var(--ink);
+      padding-top: 1rem;
     }
 
-    .team-card .name {
-      font-family: 'Fraunces', serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-bottom: 0.25rem;
+    .principles dt {
+      font-weight: 600;
+      font-size: 1.0625rem;
+      margin-bottom: 0.5rem;
     }
 
-    .team-card .role {
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 1rem;
-    }
-
-    .team-card p {
-      font-size: 0.9rem;
+    .principles dd {
       color: var(--ink-soft);
-      line-height: 1.7;
-      margin-bottom: 1rem;
+      max-width: 32rem;
     }
 
-    .text-link {
-      font-size: 0.85rem;
-      color: var(--amber);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(232, 184, 109, 0.3);
-      padding-bottom: 0.05rem;
-      transition: border-color 0.15s, color 0.15s;
+    /* Product */
+    .product {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
     }
 
-    .text-link:hover {
-      color: var(--amber-light);
-      border-color: var(--amber);
+    @media (max-width: 760px) {
+      .product { grid-template-columns: 1fr; }
     }
 
-    /* ── Contact ── */
-    .contact-box {
-      background: var(--navy);
-      border-radius: 1rem;
-      padding: clamp(2rem, 5vw, 3rem);
-      margin-top: 2rem;
-      max-width: 36rem;
-    }
+    .product-main { padding: clamp(1.5rem, 4vw, 2.75rem); }
 
-    .contact-box p {
-      color: rgba(236, 233, 227, 0.7);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .contact-email {
-      font-family: 'Fraunces', serif;
-      font-size: 1.1rem;
-      color: var(--amber-light);
-      text-decoration: none;
+    .product-name {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 2.75rem);
       font-weight: 400;
-      transition: color 0.15s;
+      line-height: 1.1;
+      margin-bottom: 1rem;
     }
 
-    .contact-email:hover { color: #fff; }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--navy);
-      border-top: 1px solid rgba(232, 184, 109, 0.1);
-      padding: 2rem 0;
+    .product-main p {
+      color: var(--ink-soft);
+      max-width: 34rem;
+      margin-bottom: 1.75rem;
     }
 
-    .footer-inner {
+    .btn-accent { background: var(--accent); color: var(--paper); }
+    .btn-accent:hover { background: var(--accent-strong); }
+
+    .spec {
+      border-left: 1px solid var(--rule);
+      padding: clamp(1.5rem, 4vw, 2.75rem);
+    }
+
+    @media (max-width: 760px) {
+      .spec { border-left: 0; border-top: 1px solid var(--rule); }
+    }
+
+    .spec div {
       display: flex;
-      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.9375rem;
+    }
+
+    .spec div:first-child { padding-top: 0; }
+    .spec div:last-child { border-bottom: 0; padding-bottom: 0; }
+    .spec dt { color: var(--ink-faint); }
+    .spec dd { font-weight: 500; text-align: right; }
+
+    /* Team */
+    .team-title { margin-bottom: 2.5rem; }
+
+    .person {
+      display: grid;
+      grid-template-columns: var(--side) 1fr;
+      gap: 1.5rem clamp(2rem, 5vw, 4rem);
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .person:first-of-type { border-top: 0; padding-top: 0; }
+    .person:last-of-type { padding-bottom: 0; }
+
+    @media (max-width: 860px) {
+      .person { grid-template-columns: 1fr; }
+    }
+
+    .person h3 {
+      font-family: var(--serif);
+      font-size: 1.625rem;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .person .role {
+      color: var(--ink-faint);
+      font-size: 0.9375rem;
+      margin-top: 0.25rem;
+    }
+
+    .creds {
+      list-style: none;
+      margin-top: 1.25rem;
+      font-size: 0.9375rem;
+      color: var(--ink-soft);
+    }
+
+    .creds li {
+      padding: 0.5rem 0 0.5rem 0.875rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .creds li + li { margin-top: 0.375rem; }
+
+    .bio { max-width: 40rem; }
+    .bio p { color: var(--ink-soft); }
+    .bio p + p { margin-top: 1rem; }
+
+    /* Contact */
+    .contact-email {
+      display: inline-block;
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      margin-top: 1.5rem;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-email:hover { color: var(--accent); }
+
+    .contact-note {
+      color: var(--ink-soft);
+      margin-top: 1.25rem;
+    }
+
+    /* Footer */
+    .site-foot {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0;
+      font-size: 0.875rem;
+      color: var(--ink-faint);
+    }
+
+    .site-foot .wrap {
+      display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 clamp(1.25rem, 5vw, 3rem);
     }
 
-    .footer-copy {
-      font-size: 0.85rem;
-      color: rgba(236, 233, 227, 0.45);
-    }
+    .site-foot a { color: var(--ink-soft); }
+    .site-foot a:hover { color: var(--accent); }
 
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
-
-    .footer-links a {
-      font-size: 0.85rem;
-      color: rgba(236, 233, 227, 0.45);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-links a:hover { color: var(--amber); }
   </style>
+  <script>
+    try {
+      const t = localStorage.getItem('theme');
+      if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">Ontic, LLC</a>
+  <nav class="site-nav" aria-label="Primary">
+    <div class="wrap">
+      <a href="#" class="brand">Ontic</a>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
+        <li><a href="#approach">Approach</a></li>
         <li><a href="#products">Products</a></li>
         <li><a href="#team">Team</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">◐</button>
+      <button class="theme-btn" id="themeToggle" type="button" aria-label="Switch color theme">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg>
+      </button>
     </div>
   </nav>
 
-  <!-- Hero -->
   <header class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <p class="hero-eyebrow">Ontic, LLC</p>
-        <h1>Technology that <em>respects</em><br>human agency</h1>
-        <p class="hero-tagline">We build privacy-first software grounded in information security and behavioral psychology — tools that give people control over their own experience, never extract it.</p>
+    <div class="wrap">
+      <h1 class="contrast">
+        <span><small>In a security assessment</small><b>Attackers call it social engineering.</b></span>
+        <span><small>In a product roadmap</small><b>Platforms call it engagement.</b></span>
+      </h1>
+      <div class="hero-foot">
+        <p><strong>Ontic builds privacy-first software that helps people recognize persuasive design and take back control of their attention.</strong> Our work draws on information security practice and behavioral psychology research.</p>
+        <div class="actions">
+          <a href="#products" class="btn btn-primary">See our products</a>
+          <a href="#contact" class="btn btn-quiet">Contact us</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- About -->
-  <section id="about">
-    <div class="container">
-      <p class="section-label">About</p>
-      <h2>Built on a different premise</h2>
-      <p class="lead">Most technology is designed to capture attention. We build the opposite: small, thoughtful software that strengthens the relationship between people and their own choices.</p>
-      <div class="about-grid">
-        <div class="about-card">
-          <span class="about-icon">🔒</span>
-          <h3>Security-first</h3>
-          <p>Founded by practitioners with deep information security backgrounds. Privacy isn't a policy — it's an architectural decision baked in from day one.</p>
-        </div>
-        <div class="about-card">
-          <span class="about-icon">🧠</span>
-          <h3>Behaviorally grounded</h3>
-          <p>Our products are informed by behavioral psychology research, not engagement metrics. We design for long-term human flourishing, not short-term retention.</p>
-        </div>
-        <div class="about-card">
-          <span class="about-icon">⚖️</span>
-          <h3>Agency over extraction</h3>
-          <p>We measure success by how much control users gain over their lives — not by time-on-app, data collected, or addictive loops engineered.</p>
-        </div>
-        <div class="about-card">
-          <span class="about-icon">🔬</span>
-          <h3>Research-backed</h3>
-          <p>Every product decision is traceable to established research. We don't design by intuition alone — we build on evidence from peer-reviewed behavioral science.</p>
+  <main>
+    <section class="section" id="approach">
+      <div class="wrap split">
+        <h2 class="section-title">Approach</h2>
+        <div>
+          <p class="lead">Most technology is designed to capture attention. We build small, careful software that strengthens the relationship between people and their own choices.</p>
+          <dl class="principles">
+            <div>
+              <dt>Security-first</dt>
+              <dd>Founded by information security practitioners. Privacy is an architectural decision made on day one, not a policy written afterward.</dd>
+            </div>
+            <div>
+              <dt>Behaviorally grounded</dt>
+              <dd>Our products follow behavioral psychology research, not engagement metrics. We design for long-term wellbeing, not short-term retention.</dd>
+            </div>
+            <div>
+              <dt>Agency over extraction</dt>
+              <dd>We measure success by how much control people gain over their own lives, not by time in app, data collected, or habit loops engineered.</dd>
+            </div>
+            <div>
+              <dt>Research-backed</dt>
+              <dd>Every product decision traces back to established, peer-reviewed behavioral science rather than intuition alone.</dd>
+            </div>
+          </dl>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Products -->
-  <section id="products">
-    <div class="container">
-      <p class="section-label">Products</p>
-      <h2>What we build</h2>
-      <p class="lead">Each product solves a real problem with the minimum footprint necessary.</p>
+    <section class="section" id="products">
+      <div class="wrap split">
+        <h2 class="section-title">Products</h2>
+        <article class="product">
+          <div class="product-main">
+            <h3 class="product-name">Digital Balance</h3>
+            <p>A privacy-first digital wellness program that helps you understand and reshape your relationship with screens and social media. Built on Acceptance and Commitment Therapy, with no subscription, no data collection, and no algorithm working against you.</p>
+            <a href="https://www.digitalbalance.app" class="btn btn-accent" target="_blank" rel="noopener">Visit digitalbalance.app</a>
+          </div>
+          <dl class="spec">
+            <div><dt>Lessons</dt><dd>52, research-backed</dd></div>
+            <div><dt>Interactive exercises</dt><dd>7</dd></div>
+            <div><dt>Framework</dt><dd>Acceptance and Commitment Therapy</dd></div>
+            <div><dt>Data collected</dt><dd>None</dd></div>
+            <div><dt>Price</dt><dd>$1, one time</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
 
-      <div class="product-card">
-        <div class="product-badge">Digital Balance</div>
-        <div class="product-info">
-          <h3>Reclaim agency over your attention</h3>
-          <p>A privacy-first digital wellness program that helps you understand and reshape your relationship with screens and social media. 52 research-backed lessons, 7 interactive exercises, built on Acceptance and Commitment Therapy. No subscription, no data collection, no algorithm fighting you. $1.</p>
-          <a href="https://www.digitalbalance.app" class="btn" target="_blank" rel="noopener">Visit digitalbalance.app →</a>
+    <section class="section" id="team">
+      <div class="wrap">
+        <h2 class="section-title team-title">Team</h2>
+
+        <article class="person">
+          <div>
+            <h3>Sylvia Olveda</h3>
+            <p class="role">Co-Founder</p>
+            <ul class="creds">
+              <li>BA in Psychology, Stanford University</li>
+              <li>Teaching Assistant to Philip Zimbardo</li>
+              <li>User experience researcher</li>
+              <li>25+ years of experience</li>
+            </ul>
+          </div>
+          <div class="bio">
+            <p>Sylvia earned her BA in psychology at Stanford, where she served as a Teaching Assistant for Philip Zimbardo. His course on the Psychology of Mind Control examined how cults, recruiters, advertisers, and institutions shape what people believe and do, often without them noticing. It changed how she saw influence: not as something that happens to the weak-willed, but as a set of techniques that work on almost everyone when the environment is built for them.</p>
+            <p>She wasn't just reading Zimbardo. She was inside the room, translating his research for students and working directly with his methods. That experience gave her a practitioner's understanding of how environments, not individual willpower, determine behavior.</p>
+            <p>She carried that lens into a career in user experience research, the discipline where behavioral psychology meets product design. Sylvia has worked for Xbox, Microsoft Games, Amazon, Chase, Nordstrom, Alaska Airlines, and Target, among others, studying why people behave the way they do inside digital systems and how those systems should be built to serve them.</p>
+            <p>What she saw there wasn't always encouraging. The same principles Zimbardo taught (reward variability, social proof, loss aversion, identity-based compliance) were being built into interfaces not to help users, but to keep them. Not as a side effect. As the product.</p>
+            <p>Digital Balance is built on Acceptance and Commitment Therapy, a framework that treats compulsive behavior not as weakness but as a predictable response to a poorly designed environment. That framing is Sylvia's. When a platform is engineered to exploit your cognition, understanding your own mind matters more than trying to out-willpower it.</p>
+          </div>
+        </article>
+
+        <article class="person">
+          <div>
+            <h3>Ryan Shanahan</h3>
+            <p class="role">Co-Founder</p>
+            <ul class="creds">
+              <li>Certified by ISC2, ISACA, and SANS/GIAC</li>
+              <li>Professional Member, Cognitive Security Institute</li>
+              <li>25+ years of experience</li>
+            </ul>
+          </div>
+          <div class="bio">
+            <p>Ryan is an information security executive with multiple certifications and more than 25 years of experience protecting organizations from the ways technology can be turned against the people who use it. He has served as a CISO, built security operations programs from the ground up, and consulted for both Fortune 500 enterprises and early-stage companies across healthcare, commercial real estate, and technology services.</p>
+            <p>His path to Digital Balance started in adversarial security work: phishing simulations, social engineering assessments, incident response. Years of studying how attackers exploit cognitive shortcuts led to an uncomfortable recognition. The same psychological levers used in targeted attacks (urgency, social proof, variable reward, loss aversion) were being deployed at population scale by the platforms billions of people use every day. The difference was legality, not impact.</p>
+            <p>Ryan is a professional member of the Cognitive Security Institute, a community of researchers and practitioners focused on defending human cognition against manipulation. He brings that security practitioner's lens to digital wellness, treating persuasive design as a threat model rather than a lifestyle problem, and built Digital Balance around the premise that users deserve to understand exactly what platforms are doing to hold their attention and why it works.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap split">
+        <h2 class="section-title">Contact</h2>
+        <div>
+          <p class="lead">Questions about our products, press inquiries, or a conversation about persuasive design and security.</p>
+          <a href="mailto:team@onticllc.com" class="contact-email">team@onticllc.com</a>
+          <p class="contact-note">We respond to every message personally.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Team -->
-  <section id="team">
-    <div class="container">
-      <p class="section-label">Team</p>
-      <h2>The people behind Ontic</h2>
-      <div class="team-grid">
-        <div class="team-card">
-          <p class="name">Sylvia Olveda</p>
-          <p class="role">Co-Founder</p>
-          <p>Sylvia holds two psychology degrees from Stanford, where she served as a Teaching Assistant for Philip Zimbardo, the researcher whose work on situational control, compliance, and how environments shape behavior became foundational to everything we now understand about influence at scale.</p>
-          <p>She wasn't just reading Zimbardo. She was inside the room, translating his research for students and working directly with his methods. That experience gave her a practitioner's understanding of how environments, not individual willpower, determine behavior.</p>
-          <p>From there, Sylvia moved into user experience research, the discipline where behavioral psychology meets product design. UX research asks why people behave the way they do inside digital systems, and how those systems should be built to actually serve human needs. It's work that sits at the uncomfortable intersection of cognitive science and commercial software, and Sylvia spent years in that space.</p>
-          <p>What she saw there wasn't encouraging. The same psychological principles she'd studied at Stanford — reward variability, social proof, loss aversion, identity-based compliance — were being baked into interfaces not to help users, but to keep them. Not as a side effect. As the product.</p>
-          <p>Digital Balance is built on Acceptance and Commitment Therapy, a framework that treats compulsive behavior not as weakness but as a predictable response to a poorly designed environment. That framing is Sylvia's. When a platform is engineered to exploit your cognition, understanding your own mind matters more than trying to out-willpower it.</p>
-        </div>
-        <div class="team-card">
-          <p class="name">Ryan Shanahan</p>
-          <p class="role">Co-Founder</p>
-          <p>Ryan is a CISSP- and CISM-certified information security executive with more than 25 years of experience protecting organizations from the ways technology can be turned against the people who use it. He has served as a CISO, built security operations programs from the ground up, and consulted for both Fortune 500 enterprises and early-stage companies across healthcare, commercial real estate, and technology services.</p>
-          <p>His path to Digital Balance started in adversarial security work: phishing simulations, social engineering assessments, incident response. Years of studying how attackers exploit cognitive shortcuts led to an uncomfortable recognition. The same psychological levers used in targeted attacks (urgency, social proof, variable reward, loss aversion) were being deployed at population scale by the platforms billions of people use every day. The difference was legality, not impact.</p>
-          <p>Ryan brings that security practitioner's lens to digital wellness. He treats persuasive design as a threat model, not a lifestyle problem, and built Digital Balance around the premise that users deserve to understand exactly what platforms are doing to hold their attention and why it works.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <p class="section-label">Contact</p>
-      <h2>Get in touch</h2>
-      <p class="lead">Questions about our products, press inquiries, or just want to talk shop — reach out.</p>
-      <div class="contact-box">
-        <p>We respond to every message personally.</p>
-        <a href="mailto:team@onticllc.com" class="contact-email">team@onticllc.com</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-inner">
-      <span class="footer-copy">© 2026 Ontic, LLC</span>
-      <ul class="footer-links">
-        <li><a href="https://www.digitalbalance.app/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
-      </ul>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>© 2026 Ontic, LLC</span>
+      <a href="https://www.digitalbalance.app/privacy.html" target="_blank" rel="noopener">Privacy policy</a>
     </div>
   </footer>
 
   <script>
-    const btn = document.getElementById('themeToggle');
-    const root = document.documentElement;
-    const stored = localStorage.getItem('theme');
-    const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    root.dataset.theme = stored || sys;
-    btn.addEventListener('click', () => {
-      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const root = document.documentElement;
+      const current = root.dataset.theme ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
-      localStorage.setItem('theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
     });
   </script>
 
