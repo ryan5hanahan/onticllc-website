@@ -1,24 +1,36 @@
-# Deploying onticllc.com via Cloudflare Pages
+# Deploying onticllc.com via GitHub Pages
 
-## 1. Connect GitHub to Cloudflare
-- Log in to https://dash.cloudflare.com
-- Go to Workers & Pages → Create → Pages → Connect to Git
-- Select the `ryan5hanahan/onticllc-website` repository
-- Build settings: Framework preset = None, Build command = (leave empty), Build output directory = /
-- Click "Save and Deploy"
+The site is a single static `index.html` served by GitHub Pages from the
+`ryan5hanahan/onticllc-website` repository. There is no build step.
 
-## 2. Add Custom Domain
-- After first deploy, go to the project → Custom domains → Add custom domain
-- Enter: onticllc.com
-- Cloudflare will auto-configure DNS if the domain is already on Cloudflare
-- If the domain is NOT on Cloudflare DNS yet:
-  - Transfer DNS to Cloudflare, OR
-  - Add a CNAME record: onticllc.com → <your-project>.pages.dev
+## Updating the site
+- Push to the `master` branch
+- GitHub Pages republishes automatically, usually within a minute or two
 
-## 3. SSL/HTTPS
-- Cloudflare auto-provisions HTTPS — no cert management needed
-- Full (Strict) SSL mode recommended
+## Pages settings
+Repository → Settings → Pages:
+- Source: Deploy from a branch, `master`, `/ (root)`
+- Custom domain: `onticllc.com` (also stored in the `CNAME` file; keep them in sync)
+- Enforce HTTPS: on
 
-## 4. Updating the site
-- Push to the `master` branch of this repo
-- Cloudflare auto-deploys within ~30 seconds
+## DNS (GoDaddy)
+| Type  | Name  | Value                     |
+|-------|-------|---------------------------|
+| A     | @     | 185.199.108.153           |
+| A     | @     | 185.199.109.153           |
+| A     | @     | 185.199.110.153           |
+| A     | @     | 185.199.111.153           |
+| CNAME | www   | ryan5hanahan.github.io    |
+
+`www.onticllc.com` redirects to `https://onticllc.com/`.
+
+## HTTPS certificate
+GitHub provisions and renews the certificate automatically. It covers
+`onticllc.com` and `www.onticllc.com`.
+
+If a domain is missing from the certificate (for example after a DNS change),
+remove the custom domain in Pages settings, save, add `onticllc.com` back, then
+re-enable Enforce HTTPS once the new certificate is issued.
+
+The `www` record must point to `ryan5hanahan.github.io`, not to `onticllc.com`,
+or GitHub will not include `www` in the certificate.
